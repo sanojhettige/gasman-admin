@@ -1,0 +1,280 @@
+<nav
+  ng-include="vm.pageContent.navbar"
+  class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega navbar-expand-md"
+  role="navigation"
+></nav>
+<div ng-include="vm.pageContent.sidebar_left" class="site-menubar"></div>
+
+<!-- Page -->
+<div class="page" ng-init="vm.getSettings();">
+  <div class="page-content container-fluid">
+    <div class="row">
+      <div class="col-xxl-12 col-lg-12">
+        <div class="card card-shadow card-responsive">
+          <div class="card-block p-0">
+            <div class="panel">
+              <div class="panel-body">
+                <form id="editSettings" name="editSettings" class="row">
+                  <div class="col-lg-6 col-md-6 col-xl-6 col-sm-12 col-xs-12">
+                    <div class="row">
+                      <label
+                        for="invStart"
+                        class="col-lg-12 col-md-3 form-control-label"
+                        >Invoice Start point</label
+                      >
+                      <div class="col-lg-12 col-md-9 form-group">
+                        <input
+                          class="form-control "
+                          id="invStart"
+                          placeholder=""
+                          ng-model="vm.getSetting.inv_number"
+                          ng-disabled="vm.getSetting.inv_number > 0"
+                          name="invStart"
+                          ng-pattern="/^[0-9]*$/"
+                          ng-class="{'is-invalid':vm.errors.inv_number || (editSettings.invStart.$error.required && editSettings.invStart.$touched)}"
+                          autocomplete="off"
+                          required
+                        />
+                        <div class="invalid-feedback">
+                          <p
+                            ng-show="editSettings.invStart.$touched && editSettings.invStart.$error.required"
+                          >
+                            Invoice start number isrequired.
+                          </p>
+                          <p ng-show="vm.errors.inv_number">
+                            {{ vm.errors.inv_number }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-xl-6 col-sm-12 col-xs-12">
+                    <div class="row">
+                      <label
+                        for="cuInv"
+                        class="col-lg-12 col-md-3 form-control-label"
+                        >Current invoice number</label
+                      >
+                      <div class="col-lg-12 col-md-9 form-group">
+                        <input
+                          class="form-control "
+                          id="cuInv"
+                          placeholder="cuInv"
+                          ng-model="vm.getSetting.inv_current"
+                          ng-disabled="true"
+                          name="cuInv"
+                          autocomplete="off"
+                          ng-pattern="/^[0-9]*$/"
+                          required
+                          ng-class="{'is-invalid':vm.errors.inv_current || (editSettings.cuInv.$touched && editSettings.cuInv.$error.required)}"
+                        />
+                        <div class="invalid-feedback">
+                          <p
+                            ng-show="editSettings.cuInv.$touched && editSettings.cuInv.$error.required"
+                          >
+                            Current invoice number is required.
+                          </p>
+                          <p ng-show="vm.errors.inv_number">
+                            {{ vm.errors.inv_number }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-xl-6 col-sm-12 col-xs-12">
+                    <div class="row">
+                      <label
+                        for="invRefFormat"
+                        class="col-lg-12 col-md-3 form-control-label"
+                        >Order Reference Format</label
+                      >
+                      <div class="col-lg-12 col-md-9 form-group">
+                        <input
+                          class="form-control"
+                          id="invRefFormat"
+                          placeholder=""
+                          ng-model="vm.getSetting.inv_ref"
+                          name="invRefFormat"
+                          ng-pattern="/^[a-zA-Z0-9\s]*$/"
+                          autocomplete="off"
+                          ng-class="{'is-invalid':vm.errors.inv_ref || (editSettings.invRefFormat.$touched && editSettings.invRefFormat.$error.required)}"
+                          required
+                        />
+                        <div class="invalid-feedback">
+                          <p
+                            ng-show="editSettings.invRefFormat.$touched && editSettings.invRefFormat.$error.required"
+                          >
+                            Invoice reference format is required.
+                          </p>
+                          <p ng-show="vm.errors.inv_ref">
+                            {{ vm.errors.inv_ref }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-xl-6 col-sm-12 col-xs-12">
+                    <div class="row">
+                      <label
+                        for="invFormat"
+                        class="col-lg-12 col-md-3 form-control-label"
+                        >Order Reference Format</label
+                      >
+                      <div class="col-lg-12 col-md-9 form-group">
+                        <select
+                          class="form-control"
+                          id="invFormat"
+                          name="invFormat"
+                          required
+                          ng-model="vm.getSetting.inv_format"
+                          ng-class="{'is-invalid':vm.errors.invoice_format || (editSettings.invFormat.$touched && editSettings.invFormat.$error.required)}"
+                        >
+                          <option value="1">Invoice</option>
+                          <option value="2">Bill</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          <p
+                            ng-show="editSettings.invFormat.$touched && editSettings.invFormat.$error.required"
+                          >
+                            Invoice print format is required.
+                          </p>
+                          <p ng-show="vm.errors.invoice_format">
+                            {{ vm.errors.invoice_format }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="col-lg-12 col-md-12 col-xl-12 col-sm-12 col-xs-12"
+                  >
+                    <div class="row">
+                      <label
+                        for="invFooter"
+                        class="col-lg-12 col-md-3 form-control-label"
+                        >Invoice Footer</label
+                      >
+                      <div class="col-lg-12 col-md-9 form-group">
+                        <textarea
+                          class="form-control "
+                          id="invFooter"
+                          rows="3"
+                          ng-model="vm.getSetting.invoice_footer"
+                          name="invFooter"
+                          autocomplete="off"
+                          ng-class="{'is-invalid':vm.errors.invoice_footer || (editSettings.invFooter.$touched && editSettings.invFooter.$error.required)}"
+                          
+                        ></textarea>
+                        <div class="invalid-feedback">
+                          <p
+                            ng-show="editSettings.invFooter.$touched && editSettings.invFooter.$error.required"
+                          >
+                            Invoice footer is required.
+                          </p>
+                          <p ng-show="vm.errors.invoice_footer">
+                            {{ vm.errors.invoice_footer }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="col-lg-12 col-md-12 col-xl-12 col-sm-12 col-xs-12"
+                  >
+                    <div class="row">
+                      <label
+                        for="payTerms"
+                        class="col-lg-12 col-md-3 form-control-label"
+                        >Payment terms</label
+                      >
+                      <div class="col-lg-12 col-md-9 form-group">
+                        <textarea
+                          class="form-control "
+                          id="payTerms"
+                          rows="3"
+                          ng-model="vm.getSetting.payment_terms"
+                          name="payTerms"
+                          autocomplete="off"
+                          ng-class="{'is-invalid':vm.errors.payment_terms || (editSettings.payTerms.$touched && editSettings.payTerms.$error.required)}"
+                          
+                        ></textarea>
+                        <div class="invalid-feedback">
+                          <p
+                            ng-show="editSettings.payTerms.$touched && editSettings.payTerms.$error.required"
+                          >
+                            Payment terms is required.
+                          </p>
+                          <p ng-show="vm.errors.payment_terms">
+                            {{ vm.errors.payment_terms }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="col-lg-12 col-md-12 col-xl-12 col-sm-12 col-xs-12"
+                  >
+                    <div class="row">
+                      <label
+                        for="delTerms"
+                        class="col-lg-12 col-md-3 form-control-label"
+                        >Delivery terms</label
+                      >
+                      <div class="col-lg-12 col-md-9 form-group">
+                        <textarea
+                          class="form-control "
+                          id="delTerms"
+                          rows="3"
+                          ng-model="vm.getSetting.delivery_terms"
+                          name="delTerms"
+                          autocomplete="off"
+                          ng-class="{'is-invalid':vm.errors.delivery_terms || (editSettings.delTerms.$touched && editSettings.delTerms.$error.required)}"
+                          
+                        ></textarea>
+                        <div class="invalid-feedback">
+                          <p
+                            ng-show="editSettings.delTerms.$touched && editSettings.delTerms.$error.required"
+                          >
+                            Payment terms is required.
+                          </p>
+                          <p ng-show="vm.errors.delivery_terms">
+                            {{ vm.errors.delivery_terms }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="col-lg-12 col-md-12 col-xl-12 col-sm-12 col-xs-12"
+                  >
+                    <div class="row">
+                      <div class="text-right">
+                        <button
+                          type="submit"
+                          class="btn btn-primary"
+                          ng-click="vm.updateSettings(vm.getSetting)"
+                          ng-disabled="editSettings.$invalid  || vm.submitting"
+                        >
+                          Save Settings
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page -->
+<div ng-include="vm.pageContent.customFooterUrl"></div>

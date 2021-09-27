@@ -1,0 +1,57 @@
+<nav ng-include="vm.pageContent.navbar" class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega navbar-expand-md" role="navigation"></nav>
+<div ng-include="vm.pageContent.sidebar_left" class="site-menubar"></div>
+
+<!-- Page -->
+<div class="page">
+    <div class="page-content container-fluid">
+        <div class="row">
+            <div class="col-xxl-12 col-lg-12">
+                <div class="card card-shadow card-responsive">
+                    <div class="card-block p-0">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="nav-tabs-horizontal" data-plugin="tabs">
+                                    <ul class="nav nav-tabs nav-tabs-line" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" ng-class="{'active': vm.reportSelected == 'sales'}" ui-sref="app.custom-reports({reportName: 'sales'})" aria-controls="salesReport">Sales</a
+                      >
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <a
+                        class="nav-link"
+                        ng-class="{'active': vm.reportSelected == 'customer'}"
+                        ui-sref="app.custom-reports({reportName: 'customer'})"
+                        aria-controls="customerReport"
+                        >Customer</a
+                      >
+                    </li>
+                  </ul>
+                  <div class="tab-content pt-20">
+                    <div
+                      class="tab-pane"
+                      ng-class="{'active': vm.reportSelected == 'sales'}"
+                      id="salesReport"
+                      role="tabpanel"
+                    >
+                      <div ng-include="'views/reports/sales.html'"></div>
+                    </div>
+                    <div
+                      class="tab-pane"
+                      ng-class="{'active': vm.reportSelected == 'customer'}"
+                      id="customerReport"
+                      role="tabpanel"
+                    >
+                      <div ng-include="'views/reports/customer.html'"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page -->
+<div ng-include="vm.pageContent.customFooterUrl"></div>

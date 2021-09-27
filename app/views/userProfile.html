@@ -1,0 +1,143 @@
+<nav
+  ng-include="vm.pageContent.navbar"
+  class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega navbar-expand-md"
+  role="navigation"
+></nav>
+<div ng-include="vm.pageContent.sidebar_left" class="site-menubar"></div>
+
+<!-- Page -->
+<div class="page" ng-init="vm.getLoggedUser();">
+  <div class="page-content container-fluid">
+    <div class="row">
+      <div class="col-xxl-12 col-lg-12">
+        <div class="card card-shadow card-responsive">
+          <div class="card-block p-0">
+            <div class="panel">
+              <div class="panel-body">
+                
+                    <form id="editProfile" name="editProfile" novalidate>
+                            <h4 class="form-title">General Info</h4>
+                            <div class="row d-sm-up-none">
+                                <div class="form-group has-feedback col-12"><img
+                                        ng-src="{{ngDialogData.user_profile_image == '' ? 'assets/images/blank_user_profile.jpg' : ngDialogData.user_profile_image}}"
+                                        alt="" class="img-fluid"></div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="form-group has-feedback col-6">
+                                    <label for="uFirstName" class="inputField">Name</label>
+                                    <input class="form-control " id="uFirstName" placeholder="Name"
+                                           ng-model="vm.getLoginUser.name" name="uFirstName"
+                                           ng-pattern="/^[a-zA-Z\s]*$/" autocomplete="off" required>
+                                    <div class="errorMessage">
+                                        <p ng-show="editProfile.uFirstName.$touched && editProfile.uFirstName.$error.required"
+                                           class="badge badge-danger">Name cant be empty</p>
+                                        <p ng-show="editProfile.uFirstName.$touched && editProfile.uFirstName.$error.pattern"
+                                           class="badge badge-danger">Enter a valid name</p>
+                                           <p ng-show="vm.errors.name"
+                                                       class="badge badge-danger">{{vm.errors.name}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback col-6">
+                                    <label for="uName" class="inputField">Usermame</label>
+                                    <input class="form-control uLastName" id="uName" placeholder=""
+                                           name="uName" ng-model="vm.getLoginUser.username" autocomplete="off" required>
+                                    <div class="errorMessage">
+                                        <p ng-show="editProfile.uName.$touched && editProfile.uName.$error.required"
+                                           class="badge badge-danger">Username cant be empty</p>
+                                           <p ng-show="vm.errors.username"
+                                                       class="badge badge-danger">{{vm.errors.username}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group has-feedback col-6">
+                                        <label for="uCellphone" class="inputField">Phone Number</label>
+                                        <input type="text" class="form-control uCellphone" id="uCellphone"
+                                               name="contact" ng-minlength="10" maxlength="13"
+                                               placeholder="Phone number" ng-model="vm.getLoginUser.mobile"
+                                               required>
+                                               <div class="errorMessage">
+                                                    <p ng-show="editProfile.contact.$touched && editProfile.contact.$error.required"
+                                                       class="badge badge-danger">Contact number cant be empty</p>
+                                                    <p ng-show="vm.errors.mobile"
+                                                       class="badge badge-danger">{{vm.errors.mobile}}</p>
+                                                </div>
+                                </div>
+                                <div class="form-group has-feedback col-6">
+                                    <label for="uEmail" class="inputField">Email</label>
+                                    <input type="email" class="form-control uEmail" id="uEmail" name="email"
+                                           placeholder="Email" ng-model="vm.getLoginUser.email"
+                                           ng-pattern="/^[aA-zZ]+[aA-zZ0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
+                                    <div class="errorMessage">
+                                        <p ng-show="editProfile.email.$touched && editProfile.email.$error.required"
+                                           class="badge badge-danger">Email cant be empty</p>
+                                        <p ng-show="editProfile.email.$touched && editProfile.email.$error.pattern"
+                                           class="badge badge-danger">Enter a valid email</p>
+                                           <p ng-show="vm.errors.email"
+                                                       class="badge badge-danger">{{vm.errors.email}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="text-align: right">
+                                <button type="button" id="submit" class="btn btn-success"
+                                        ng-click="vm.updateProfile(vm.getLoginUser)"
+                                        ng-disabled="editProfile.$invalid">Save
+                                </button>
+                            </div>
+                            <div>
+                                <hr>
+                                <h4 class="form-title">Change Password</h4>
+                                <div class="form-group">
+                                    <label for="newPassword" class="col-sm-3 control-label inputField">New
+                                        Password</label>
+                                    <div class="col-sm-4">
+                                        <input type="password" class="form-control" id="newPassword"
+                                               ng-model="vm.newPassword" name="newPassword" placeholder=""
+                                               ng-minlength="5">
+                                        <div class="errorMessage">
+                                            <p ng-show="editProfile.newPassword.$touched && editProfile.newPassword.$error.minlength"
+                                               class="badge badge-danger">Password should contain atleast 5
+                                                characters</p>
+                                                <p ng-show="vm.errors.password"
+                                                       class="badge badge-danger">{{vm.errors.password}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmPassword" class="col-sm-3 control-label inputField">Confirm
+                                        Password</label>
+                                    <div class="col-sm-4">
+                                        <input ng-confirm-field type="password" class="form-control"
+                                               id="confirmPassword" ng-model="vm.confirmPassword"
+                                               confirm-against="vm.newPassword" name="confirmPassword"
+                                               placeholder="">
+                                               <div class="errorMessage">
+                                                    <p ng-show="editProfile.confirmPassword.$error.noMatch"
+                                                        class="badge badge-danger">New and confirm password do not match</p>
+                                                        <p ng-show="vm.errors.confirm_password"
+                                                               class="badge badge-danger">{{vm.errors.confirm_password}}</p>
+                                                </div>
+                                    </div>
+                                </div>
+                                <div style="text-align:left">
+                                    <button type="button" class="btn btn-success"
+                                            ng-disabled="editProfile.confirmPassword.$error.noMatch || vm.newPassword =='' "
+                                            ng-click="vm.savePassword(vm.newPassword,vm.confirmPassword)">Update
+                                        Password
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Page -->
+<div ng-include="vm.pageContent.customFooterUrl"></div>

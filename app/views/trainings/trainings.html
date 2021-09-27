@@ -1,0 +1,41 @@
+<nav
+  ng-include="vm.pageContent.navbar"
+  class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega navbar-expand-md"
+  role="navigation"
+></nav>
+<div ng-include="vm.pageContent.sidebar_left" class="site-menubar"></div>
+
+<!-- Page -->
+<div class="page" ng-init="vm.getUserList();">
+  <div class="page-content container-fluid">
+    <div class="row">
+      <div class="col-xxl-12 col-lg-12">
+        <div class="card card-shadow card-responsive">
+          <div class="card-block p-0">
+            <div class="panel">
+              <div class="panel-body">
+                <div class="table-responsive">
+                  <table
+                    class="table"
+                    datatable=""
+                    dt-columns="vm.dtColumns"
+                    dt-options="vm.dtOptions"
+                  ></table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button
+  class="site-action site-floataction btn-raised btn btn-success btn-floating"
+  type="button"
+  ng-click="vm.showTrainingById(0)"
+>
+  <i class="icon wb-plus" aria-hidden="true"></i>
+</button>
+<!-- End Page -->
+<div ng-include="vm.pageContent.customFooterUrl"></div>

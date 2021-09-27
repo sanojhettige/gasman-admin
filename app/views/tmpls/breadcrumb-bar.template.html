@@ -1,0 +1,46 @@
+<ol class="breadcrumb" breadcrumb>
+  <ncy-breadcrumb></ncy-breadcrumb>
+
+  <!-- Breadcrumb Menu-->
+  <li class="breadcrumb-menu d-md-down-none">
+    <div
+      class="btn-group"
+      role="group"
+      aria-label="Button group with nested dropdown"
+      ng-hide="$state.includes('app.main');"
+    >
+      <button
+        ng-show="$state.includes('app.videos');"
+        class="btn btn-sm btn-success"
+        ng-click="vm.showVideoById(0)"
+      >
+        <i class="fa fa-plus"></i> Add New
+      </button>
+
+      <button
+        ng-show="$state.includes('app.images');"
+        class="btn btn-sm btn-success"
+        ng-click="vm.showImageById(0)"
+      >
+        <i class="fa fa-plus"></i> Add New
+      </button>
+
+      <button
+        ng-show="$state.includes('app.calendar');"
+        class="btn btn-sm btn-success"
+        ng-click="vm.showEventById(0)"
+      >
+        <i class="fa fa-plus"></i> Add New
+      </button>
+
+      <button
+        ng-show="$state.includes('app.store');"
+        class="btn btn-sm btn-success"
+        ng-click="vm.showBookById(0)"
+      >
+        <i class="fa fa-plus"></i> Add New
+      </button>
+      
+    </div>
+  </li>
+</ol>

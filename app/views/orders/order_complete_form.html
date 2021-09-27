@@ -1,0 +1,108 @@
+<div ng-init="vm.getOrderById(ngDialogData.orderId);">
+  <h4 class="form-title">{{ ngDialogData.title }}</h4>
+  <hr />
+  <form autocomplete="off" id="assignAgent" name="assignAgent" novalidate>
+    <table class="table table-bordered">
+      <tr>
+        <td>Order Ref</td>
+        <td>{{ vm.orderById.order_reference }}</td>
+      </tr>
+      <tr>
+        <td>Customer Name</td>
+        <td>{{ vm.orderById.customer_name }}</td>
+      </tr>
+      <tr>
+        <td>Delivery Address</td>
+        <td>{{ vm.orderById.delivery_address }}</td>
+      </tr>
+      <tr>
+        <td>Order Type</td>
+        <td>{{ vm.orderById.order_type_name }}</td>
+      </tr>
+      <tr>
+        <td>Delivery Date/Time</td>
+        <td>
+          {{ vm.orderById.delivery_date }} {{ vm.orderById.delivery_time }}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">Order Items</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th class="text-left">Description</th>
+                <th class="text-right">Quantity</th>
+                <th class="text-right">Unit Cost</th>
+                <th class="text-right">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in vm.orderById.items track by $index">
+                <td class="text-left">
+                  {{ item.category }}
+                  {{ item.name }} ({{ vm.orderById.product_type_name }} )
+                </td>
+                <td class="text-right">
+                  {{ item.qty }}
+                </td>
+                <td class="text-right">
+                  {{ item.price | number: 2 }}
+                </td>
+                <td class="text-right">
+                  {{ item.sub_total | number: 2 }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>Sub Total</td>
+        <td class="text-right">{{ vm.orderById.gross_total | number: 2 }}</td>
+      </tr>
+      <tr>
+        <td>Deposit</td>
+        <td class="text-right">
+          {{ vm.orderById.deposit_charge | number: 2 }}
+        </td>
+      </tr>
+      <tr>
+        <td>Delivery Charge</td>
+        <td class="text-right">
+          {{ vm.orderById.delivery_charge | number: 2 }}
+        </td>
+      </tr>
+      <tr>
+        <td>Grand Total</td>
+        <td class="text-right">{{ vm.orderById.net_total | number: 2 }}</td>
+      </tr>
+    </table>
+
+    <hr />
+    <div class="row">
+      <div class="modal-footer col-12">
+        <button
+          type="button"
+          class="btn btn-default"
+          ng-click="vm.closePopUp()"
+          data-dismiss="modal"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="button"
+          id="submit"
+          class="btn btn-success"
+          ng-click="vm.orderComplete(vm.orderById)"
+          ng-disabled="!vm.orderById.id || vm.submitting"
+        >
+          {{ ngDialogData.saveBtn }}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

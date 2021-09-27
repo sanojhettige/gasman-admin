@@ -1,0 +1,108 @@
+<div ng-init="vm.getCategoryById(ngDialogData.categoryId)">
+    <h4 class="form-title">{{ ngDialogData.title }}</h4>
+    <hr />
+    <form autocomplete="off" id="editCategory" name="editCategory" novalidate>
+        <div class="form-row">
+            <div class="form-group has-feedback col-12">
+                <label for="categoryName" class="form-control-label">Category Name</label
+        >
+        <input
+          class="form-control "
+          id="categoryName"
+          placeholder="Name"
+          ng-model="vm.categoryById.name"
+          name="categoryName"
+          autocomplete="off"
+          required
+        />
+        <div class="errorMessage">
+          <p
+            ng-show="editCategory.categoryName.$touched && editCategory.categoryName.$error.required"
+            class="badge badge-danger"
+          >
+            Category name is required.
+          </p>
+          <p ng-show="vm.errors.name" class="badge badge-danger">
+            {{ vm.errors.name }}
+          </p>
+        </div>
+      </div>
+      <div class="form-group has-feedback col-12">
+        <label for="description" class="form-control-label">Description</label>
+                <textarea class="form-control description" id="description" name="description" rows="5" ng-model="vm.categoryById.description">
+        </textarea>
+                <div class="errorMessage">
+                    <p ng-show="editCategory.description.$touched && editCategory.description.$error.required" class="badge badge-danger">
+                        Description is required.
+                    </p>
+                    <p ng-show="vm.errors.description" class="badge badge-danger">
+                        {{ vm.errors.description }}
+                    </p>
+                </div>
+            </div>
+            <div class="form-group has-feedback col-12">
+                <label for="categoryType" class="form-control-label">Category Type</label
+        >
+        <select
+          class="form-control"
+          name="categoryType"
+          id="categoryType"
+          ng-model="vm.categoryById.category_type"
+        >
+          <option value="">Select Type</option>
+          <option
+            ng-repeat="ct in ngDialogData.categoryTypes"
+            value="{{ ct.id }}"
+            >{{ ct.name }}</option
+          >
+        </select>
+        <div class="errorMessage">
+          <p
+            ng-show="editCategory.categoryType.$touched && editCategory.categoryType.$error.required"
+            class="badge badge-danger"
+          >
+            Category Type are required.
+          </p>
+          <p ng-show="vm.errors.category_type" class="badge badge-danger">
+            {{ vm.errors.category_type }}
+          </p>
+        </div>
+      </div>
+      <div class="form-group has-feedback col-12">
+        <label for="description" class="form-control-label">Image</label>
+                <div class="avatar-upload">
+                    <div class="avatar-edit">
+                        <div class="file-upload-wrapper" data-text="Select your file!">
+                            <input name="file-upload-field" id="imageUpload" type="file" class="file-upload-field" ng-file-select="onFileSelect($files)" accept=".png, .jpg, .jpeg" ng-model="vm.imageSrc" />
+                        </div>
+                        <label for="imageUpload"></label>
+                    </div>
+                    <div class="avatar-preview">
+                        <img id="imagePreview" ng-src="{{ vm.imageSrc }}" on-error-src="/assets/images/default.jpg" />
+                    </div>
+                </div>
+
+                <div class="errorMessage">
+                    <p ng-show="editProduct.image.$touched && editProduct.image.$error.required" class="badge badge-danger">
+                        Image cant be empty
+                    </p>
+                    <p ng-show="vm.errors.image" class="badge badge-danger">
+                        {{ vm.errors.image }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="modal-footer col-12">
+                <button type="button" class="btn btn-default" ng-click="vm.closePopUp()" data-dismiss="modal">
+          Cancel
+        </button>
+
+                <button type="button" id="submit" class="btn btn-success" ng-click="vm.updateCategory(vm.categoryById)" ng-disabled="editCategory.description.$invalid || editCategory.categoryName.$invalid || vm.submitting">
+          {{ ngDialogData.saveBtn }}
+        </button>
+            </div>
+        </div>
+    </form>
+</div>

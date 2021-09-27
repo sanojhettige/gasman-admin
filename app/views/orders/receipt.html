@@ -1,0 +1,161 @@
+<style>
+  body {
+    background: rgb(204, 204, 204);
+  }
+  page {
+    background: white;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 0.5cm;
+    box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+  }
+  page[size="A4"] {
+    width: 21cm;
+    height: 29.7cm;
+    padding: 20px;
+  }
+  page[size="receipt"] {
+    width: 5.8cm;
+    height: 10cm;
+    text-align: center;
+    font-size: 0.8em;
+  }
+  page[size="A4"][layout="landscape"] {
+    width: 29.7cm;
+    height: 21cm;
+  }
+  page[size="A3"] {
+    width: 29.7cm;
+    height: 42cm;
+  }
+  page[size="A3"][layout="landscape"] {
+    width: 42cm;
+    height: 29.7cm;
+  }
+  page[size="A5"] {
+    width: 14.8cm;
+    height: 21cm;
+  }
+  page[size="A5"][layout="landscape"] {
+    width: 21cm;
+    height: 14.8cm;
+  }
+  @media print {
+    body,
+    page {
+      margin: 0;
+      box-shadow: 0;
+    }
+  }
+  p {
+    margin-bottom: 0rem !important;
+  }
+  .spanm {
+    margin-left: 50px;
+  }
+</style>
+
+<page size="receipt" style="text-align: center">
+  <div ng-init="vm.getOrderById(vm.selectedOrderId);">
+    <div class="page-invoice-table table-responsive">
+      <table class="table" style="border: 2px solid #FFF;">
+        <tr>
+          <td>
+            <p style="font-weight: bold">{{ vm.orderById.agent_name }}</p>
+            <p>{{ vm.orderById.agent.address }}</p>
+            <p>{{ vm.orderById.agent.telephone }}</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-left">
+            <div class="row">
+              <div class="col-md-5">
+                Ref No
+              </div>
+              <div class="col-md-7">
+                {{ vm.orderById.order_reference }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                Order Date
+              </div>
+              <div class="col-md-7">
+                {{ vm.orderById.order_date }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                Order Type
+              </div>
+              <div class="col-md-7"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                Customer
+              </div>
+              <div class="col-md-7">
+                {{ vm.orderById.customer_name }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                Sch. Time
+              </div>
+              <div class="col-md-7"></div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="page-invoice-table table-responsive">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <div
+                class="row"
+                ng-repeat="item in vm.orderById.items track by $index"
+              >
+                <div class="col-md-6 text-left">
+                  {{ item.category }} {{ item.name }}
+                </div>
+                <div class="col-md-2 text-left">
+                  {{ item.qty }}
+                </div>
+                <div class="col-md-4 text-right">
+                  {{ item.sub_total | number: 2 }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-7 text-left">
+                  Sub Total
+                </div>
+                <div class="col-md-5 text-right">
+                  {{ vm.orderById.gross_total | number: 2 }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-7 text-left">
+                  Delivery Charge
+                </div>
+                <div class="col-md-5 text-right">
+                  {{ vm.orderById.delivery_charge | number: 2 }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-7 text-left">
+                  Grand Total
+                </div>
+                <div class="col-md-5 text-right">
+                  {{ vm.orderById.net_total | number: 2 }}
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</page>

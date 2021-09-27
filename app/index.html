@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html ng-app="gasAdmin" class="no-js {{ PageHtml.htmlClass() }}" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <base href="/" />
+
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title>{{ PageHtml.title() }}</title>
+
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css assets/styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="/bower_components/angular-ui-notification/dist/angular-ui-notification.css" />
+    <link rel="stylesheet" href="/bower_components/simple-line-icons/css/simple-line-icons.css" />
+    <link rel="stylesheet" href="/bower_components/ng-dialog/css/ngDialog.css" />
+    <link rel="stylesheet" href="/bower_components/ng-dialog/css/ngDialog-theme-default.css" />
+    <link rel="stylesheet" href="/bower_components/angular-moment-picker/dist/angular-moment-picker.min.css" />
+    <link rel="stylesheet" href="/bower_components/angular-tooltips/dist/angular-tooltips.min.css" />
+    <link rel="stylesheet" href="/bower_components/devextreme/css/dx.spa.css" />
+    <link rel="stylesheet" href="/bower_components/devextreme/css/dx.common.css" />
+    <link rel="stylesheet" href="/bower_components/devextreme/css/dx.light.css" />
+    <link rel="stylesheet" href="/bower_components/jquery-timepicker-jt/jquery.timepicker.css" />
+    <link rel="stylesheet" href="/bower_components/intl-tel-input/build/css/intlTelInput.css" />
+    <link rel="stylesheet" href="/bower_components/angular-multiselect/release/styles/multi-select.css" />
+
+    <link href="/bower_components/angularjs-datepicker/dist/angular-datepicker.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/bower_components/ng-tags-input/ng-tags-input.css" />
+    <link rel="stylesheet" type="text/css" href="/bower_components/angular-confirm/dist/angular-confirm.min.css" />
+    <link rel="stylesheet" type="text/css" href="/bower_components/trix/dist/trix.css" />
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
+    <link rel="stylesheet" href="/bower_components/angular-datatables/dist/css/angular-datatables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css">
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!--[if gte IE 9]><!-->
+    <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
+    <!--<![endif]-->
+    <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>-->
+    <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-sanitize.min.js"></script>-->
+
+    <!-- build:css assets/styles/style.css -->
+    <link rel="stylesheet" href="assets/styles/style.css?v1.0.0" />
+    <!-- endbuild -->
+    <link rel="stylesheet" href="assets/fonts/web-icons/web-icons.min-v4.0.2.css" />
+    <link rel="stylesheet" href="assets/fonts/brand-icons/brand-icons.min-v4.0.2.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic" />
+</head>
+
+<!-- page-login layout-full page-dark -->
+
+<body class="animsition {{ PageHtml.bodyClass() }}">
+    <!--[if lt IE 8]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="http://browsehappy.com/">upgrade your browser</a> to improve
+        your experience.
+      </p>
+    <![endif]-->
+
+    <ui-view></ui-view>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular-datatables/dist/jquery.dataTables.min.js"></script>
+    <script src="/bower_components/tether/dist/js/tether.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-datatables/dist/angular-datatables.min.js"></script>
+    <script src="/bower_components/angular-datatables/dist/dataTables.columnFilter.js"></script>
+    <script src="/bower_components/angular-datatables/dist/plugins/columnfilter/angular-datatables.columnfilter.js"></script>
+    <script src="/bower_components/angular-datatables/dist/dataTables.lightColumnFilter.js"></script>
+    <script src="/bower_components/angular-datatables/dist/plugins/light-columnfilter/angular-datatables.light-columnfilter.min.js"></script>
+
+    <!-- Buttons -->
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
+
+
+    <script src="/bower_components/angular-datatables/dist/plugins/buttons/angular-datatables.buttons.min.js"></script>
+
+
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="/bower_components/angular-ui-notification/dist/angular-ui-notification.js"></script>
+    <script src="/bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
+    <script src="/bower_components/angular-base64/angular-base64.js"></script>
+    <script src="/bower_components/angular-base64-upload/dist/angular-base64-upload.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.js"></script>
+    <script src="/bower_components/crypto-js/index.js"></script>
+    <script src="/bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+    <script src="/bower_components/ng-dialog/js/ngDialog.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
+    <script src="/bower_components/angular-moment-picker/dist/angular-moment-picker.min.js"></script>
+    <script src="/bower_components/vs-google-autocomplete/dist/vs-google-autocomplete.js"></script>
+    <script src="/bower_components/vs-google-autocomplete/dist/vs-autocomplete-validator.js"></script>
+    <script src="/bower_components/angular-tooltips/dist/angular-tooltips.min.js"></script>
+    <script src="/bower_components/angular-validation/dist/angular-validation.js"></script>
+    <script src="/bower_components/angular-validation/dist/angular-validation-rule.js"></script>
+    <script src="/bower_components/devextreme/js/dx.all.js"></script>
+    <script src="/bower_components/angularUtils-pagination/dirPagination.js"></script>
+    <!-- endbower -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" crossorigin="anonymous"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/plugins.js -->
+    <script src="/bower_components/bootstrap/js/dist/util.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/tooltip.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/popover.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/dropdown.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/alert.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/button.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/carousel.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/collapse.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/modal.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/scrollspy.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/tab.js"></script>
+    <script src="/bower_components/intl-tel-input/build/js/utils.js"></script>
+    <script src="/bower_components/angular-jquery-timepicker/src/timepickerdirective.min.js"></script>
+    <script src="/bower_components/ngMask/dist/ngMask.js"></script>
+    <script src="/bower_components/checklist-model/checklist-model.js"></script>
+    <script src="/bower_components/ng-drag-to-reorder/ngDragToReorder.js"></script>
+    <script src="/bower_components/angular-toArrayFilter/toArrayFilter.js"></script>
+    <script src="/bower_components/jquery-timepicker-jt/jquery.timepicker.js"></script>
+    <script src="/bower_components/angular-filter/dist/angular-filter.js"></script>
+    <script src="/bower_components/angular-confirm-field/app/package/js/angular-confirm-field.js"></script>
+    <script src="/bower_components/angular-image-compress/angular-image-compress.js"></script>
+    <script src="/bower_components/international-phone-number/releases/international-phone-number.js"></script>
+    <script src="/bower_components/ng-intl-tel-input/dist/ng-intl-tel-input.js"></script>
+    <script src="/bower_components/intl-tel-input/build/js/intlTelInput.js"></script>
+    <script src="/bower_components/chart.js/dist/Chart.js"></script>
+    <script src="/bower_components/angular-chart.js/dist/angular-chart.js"></script>
+    <script src="/bower_components/angularjs-datepicker/dist/angular-datepicker.js"></script>
+    <script src="/bower_components/angularjs-dropdown-multiselect/dist/angularjs-dropdown-multiselect.min.js"></script>
+    <script src="/bower_components/ng-tags-input/ng-tags-input.js"></script>
+    <script src="/bower_components/angular-confirm/dist/angular-confirm.min.js"></script>
+    <script src="/bower_components/angular-base64/angular-base64.js"></script>
+    <script src="/bower_components/trix/dist/trix.js"></script>
+    <script src="/bower_components/trix/dist/angular-trix.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/app.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/config.js"></script>
+    <script src="scripts/routes.js"></script>
+    <script src="scripts/controllers/ErrorCtrl.js"></script>
+    <script src="scripts/controllers/LoginCtrl.js"></script>
+    <script src="scripts/controllers/MainCtrl.js"></script>
+    <script src="scripts/controllers/AgentCtrl.js"></script>
+    <script src="scripts/controllers/ProductCtrl.js"></script>
+    <script src="scripts/controllers/CategoryCtrl.js"></script>
+    <script src="scripts/controllers/OrderCtrl.js"></script>
+    <script src="scripts/controllers/ReportCtrl.js"></script>
+    <script src="scripts/controllers/UserCtrl.js"></script>
+    <script src="scripts/services/authentication.service.js"></script>
+    <script src="scripts/services/agent.service.js"></script>
+    <script src="scripts/services/product.service.js"></script>
+    <script src="scripts/services/category.service.js"></script>
+    <script src="scripts/services/order.service.js"></script>
+    <script src="scripts/services/user.service.js"></script>
+    <script src="scripts/services/report.service.js"></script>
+    <script src="scripts/directives.js"></script>
+    <script src="scripts/factories.js"></script>
+    <script src="scripts/filter/customFilter.js"></script>
+    <script src="scripts/factory.js"></script>
+
+    <!-- endbuild -->
+</body>
+
+</html>

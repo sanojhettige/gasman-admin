@@ -1,0 +1,79 @@
+<div class="site-menubar-body">
+    <div>
+        <div>
+            <ul class="site-menu" data-plugin="menu">
+                <li class="site-menu-category">General</li>
+                <li class="site-menu-item">
+                    <a ui-sref-active="active" ui-sref="app.main" ng-click="vm.clearPage()">
+                        <i class="site-menu-icon wb-dashboard" aria-hidden="true"></i>
+                        <span class="site-menu-title">Dashboard</span>
+                    </a>
+                </li>
+                <li class="site-menu-item">
+                    <a ui-sref-active="active" ng-show="agentAccessFlag" ui-sref="app.agents" ng-click="vm.agents()">
+                        <i class="site-menu-icon wb-users" aria-hidden="true"></i>
+                        <span class="site-menu-title">Agents</span>
+                    </a>
+                </li>
+                <li class="site-menu-item">
+                    <a ui-sref-active="active" ng-show="productAccessFlag" ui-sref="app.products" ng-click="vm.clearPage()">
+                        <i class="site-menu-icon wb-tag" aria-hidden="true"></i>
+                        <span class="site-menu-title">Products</span>
+                    </a>
+                </li>
+                <li class="site-menu-item">
+                    <a ui-sref-active="active" ng-show="categoryAccessFlag" ui-sref="app.categories" ng-click="vm.clearPage()">
+                        <i class="site-menu-icon wb-folder" aria-hidden="true"></i>
+                        <span class="site-menu-title">Categories</span>
+                    </a>
+                </li>
+                <li class="site-menu-item">
+                    <a ui-sref-active="active" ng-show="orderAccessFlag" ui-sref="app.orders" ng-click="vm.clearPage()">
+                        <i class="site-menu-icon wb-list" aria-hidden="true"></i>
+                        <span class="site-menu-title">Orders</span>
+                    </a>
+                </li>
+                <li class="site-menu-item">
+                    <a ui-sref-active="active" ng-show="userAccessFlag" ui-sref="app.users" ng-click="vm.clearPage()">
+                        <i class="site-menu-icon wb-user" aria-hidden="true"></i>
+                        <span class="site-menu-title">Users</span>
+                    </a>
+                </li>
+                <li class="site-menu-item">
+                    <a ui-sref-active="active" ng-show="reportAccessFlag" ui-sref="app.reports" ng-click="vm.clearPage()">
+                        <i class="site-menu-icon wb-book" aria-hidden="true"></i>
+                        <span class="site-menu-title">Reports</span>
+                    </a>
+                </li>
+                <li class="site-menu-item">
+                    <a ui-sref-active="active" ng-show="applicationAccessFlag" ui-sref="app.settings" ng-click="vm.clearPage()">
+                        <i class="site-menu-icon wb-settings" aria-hidden="true"></i>
+                        <span class="site-menu-title">Settings</span>
+                    </a>
+                </li>
+                <li class="site-menu-item">
+                    <a ui-sref-active="active" ng-show="agentSettingsFlag" ui-sref="app.agent-settings" ng-click="vm.clearPage()">
+                        <i class="site-menu-icon wb-settings" aria-hidden="true"></i>
+                        <span class="site-menu-title">Settings</span>
+                    </a>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+<div class="site-menubar-footer" ng-show="applicationAccessFlag">
+    <a ui-sref="app.settings" class="fold-show" data-placement="top" data-toggle="tooltip" data-original-title="Settings">
+        <span class="icon wb-settings" aria-hidden="true"></span>
+    </a>
+    <a ui-sref="app.profile" data-placement="top" data-toggle="tooltip" data-original-title="Lock">
+        <span class="icon wb-user" aria-hidden="true"></span>
+    </a>
+    <a href="javascript: void(0);" ng-click="logout();" data-placement="top" data-toggle="tooltip" data-original-title="Logout">
+        <span class="icon wb-power" aria-hidden="true"></span>
+    </a>
+</div>
+</div>

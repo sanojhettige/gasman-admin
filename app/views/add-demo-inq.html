@@ -1,0 +1,204 @@
+<div style="background-color:#FFF; width:60%; margin-top:10px;">
+  <form class="form-horizontal" id="editProfile" name="editProfile" novalidate>
+    <div class="row">
+      <div class="form-group has-feedback col-12">
+        <label for="name" class="inputField">Customer Name</label>
+        <input
+          class="form-control "
+          id="name"
+          placeholder="Name"
+          ng-model="vm.form.customer_name"
+          name="name"
+          autocomplete="off"
+          required
+        />
+        <div class="errorMessage">
+          <p
+            ng-show="editProfile.name.$touched && editProfile.name.$error.required"
+            class="badge badge-danger"
+          >
+            Name is required
+          </p>
+          <p ng-show="vm.errors.customer_name" class="badge badge-danger">
+            {{ vm.errors.customer_name }}
+          </p>
+        </div>
+        <label for="contact" class="inputField" style="margin-top: 15px;"
+          >Contact Number</label
+        >
+        <input
+          class="form-control contact"
+          id="contact"
+          placeholder=""
+          name="contact"
+          ng-model="vm.form.contact_number"
+          autocomplete="off"
+          required
+        />
+        <div class="errorMessage">
+          <p
+            ng-show="editProfile.contact.$touched && editProfile.contact.$error.required"
+            class="badge badge-danger"
+          >
+            Contact Number is required
+          </p>
+          <p ng-show="vm.errors.contact_number" class="badge badge-danger">
+            {{ vm.errors.contact_number }}
+          </p>
+        </div>
+        <label for="rdate" class="inputField" style="margin-top: 15px;"
+          >Renewal Date</label
+        >
+        <datepicker date-format="yyyy-MM-dd">
+          <input
+            id="renewal_date"
+            required
+            name="renewal_date"
+            class="form-control calender renewal_date"
+            ng-model="vm.form.renewal_date"
+            type="text"
+          />
+        </datepicker>
+        <div class="errorMessage">
+          <p
+            ng-show="editProfile.renewal_date.$touched && editProfile.renewal_date.$error.required"
+            class="badge badge-danger"
+          >
+            Renewal date is required.
+          </p>
+          <p ng-show="vm.errors.renewal_date" class="badge badge-danger">
+            {{ vm.errors.renewal_date }}
+          </p>
+        </div>
+        <label class="inputField" for="insurer" style="margin-top: 15px;"
+          >Present Insurer</label
+        >
+        <input
+          type="text"
+          class="form-control insurer"
+          id="insurer"
+          name="insurer"
+          ng-model="vm.form.present_insurer"
+          required
+        />
+        <div class="errorMessage">
+          <p
+            ng-show="editProfile.present_insurer.$touched && editProfile.present_insurer.$error.required "
+            class="badge badge-danger"
+          >
+            Present insurer is required.
+          </p>
+          <p ng-show="vm.errors.present_insurer" class="badge badge-danger">
+            {{ vm.errors.present_insurer }}
+          </p>
+        </div>
+        <label class="inputField" for="premium" style="margin-top: 15px;"
+          >Present Premium</label
+        >
+        <input
+          type="text"
+          class="form-control premium"
+          id="premium"
+          name="premium"
+          ng-model="vm.form.present_premium"
+          required
+        />
+        <div class="errorMessage">
+          <p
+            ng-show="editProfile.present_premium.$touched && editProfile.present_premium.$error.required "
+            class="badge badge-danger"
+          >
+            Presnt premium is required.
+          </p>
+          <p ng-show="vm.errors.present_premium" class="badge badge-danger">
+            {{ vm.errors.present_premium }}
+          </p>
+        </div>
+        <label class="inputField" for="policy_number" style="margin-top: 15px;"
+          >Policy number</label
+        >
+        <input
+          type="text"
+          class="form-control policy_number"
+          id="policy_number"
+          name="policy_number"
+          ng-model="vm.form.policy_number"
+          required
+        />
+        <div class="errorMessage">
+          <p
+            ng-show="editProfile.policy_number.$touched && editProfile.policy_number.$error.required "
+            class="badge badge-danger"
+          >
+            Policy number is required.
+          </p>
+          <p ng-show="vm.errors.policy_number" class="badge badge-danger">
+            {{ vm.errors.policy_number }}
+          </p>
+        </div>
+        <label class="inputField" for="follow_up_date" style="margin-top: 15px;"
+          >Follow up date</label
+        >
+        <datepicker date-format="yyyy-MM-dd">
+          <input
+            id="follow_up_date"
+            required
+            name="follow_up_date"
+            class="form-control calender follow_up_date"
+            ng-model="vm.form.follow_up_date"
+            type="text"
+          />
+        </datepicker>
+        <div class="errorMessage">
+          <p
+            ng-show="editProfile.follow_up_date.$touched && editProfile.follow_up_date.$error.required "
+            class="badge badge-danger"
+          >
+            Follow up date cant be empty
+          </p>
+          <p ng-show="vm.errors.follow_up_date" class="badge badge-danger">
+            {{ vm.errors.follow_up_date }}
+          </p>
+        </div>
+        <!-- <label class="inputField" for="remarks" style="margin-top: 15px;"
+          >Remarks</label
+        >
+        <textarea
+          name="remarks"
+          id="remarks"
+          class="form-control"
+          ng-model="vm.form.remarks"
+        ></textarea>
+        <div class="errorMessage">
+          <p
+            ng-show="editProfile.remarks.$touched && editProfile.remarks.$error.required "
+            class="badge badge-danger"
+          >
+            Remarks cant be empty
+          </p>
+          <p ng-show="vm.errors.remarks" class="badge badge-danger">
+            {{ vm.errors.remarks }}
+          </p>
+        </div> -->
+      </div>
+    </div>
+    <hr />
+    <input type="hidden" ng-model="vm.form.vendor_id" />
+    <input type="hidden" ng-model="vm.form.product_id" />
+    <input type="hidden" ng-model="vm.form.rate_type" />
+    <input type="hidden" ng-model="vm.form.remarks" />
+    <div class="row">
+      <div class="modal-footer col-12">
+        <button
+          type="button"
+          id="submit"
+          class="btn btn-success"
+          ng-click="vm.addInquiry(vm.form)"
+          ng-disabled="vm.submitting"
+        >
+          Add Inquiry
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

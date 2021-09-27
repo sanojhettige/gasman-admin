@@ -1,0 +1,255 @@
+<div ng-init="vm.getProductById(ngDialogData.productId)">
+  <h4 class="form-title">{{ ngDialogData.title }}</h4>
+  <hr />
+  <form autocomplete="off" id="editProduct" name="editProduct" novalidate>
+    <div class="form-row">
+      <div class="form-group has-feedback col-6">
+        <label for="brand" class="form-control-label">Brand</label>
+        <select
+          name="brand"
+          id="brand"
+          class="form-control"
+          required
+          ng-model="vm.productById.category_id"
+        >
+          <option value="">Select Brand</option>
+          <option
+            ng-repeat="brd in ngDialogData.productBrands"
+            value="{{ brd.id }}"
+            >{{ brd.name }}</option
+          >
+        </select>
+        <div class="errorMessage">
+          <p
+            ng-show="editProduct.brand.$touched && editProduct.brand.$error.required"
+            class="badge badge-danger"
+          >
+            Brand is required.
+          </p>
+          <p ng-show="vm.errors.category_id" class="badge badge-danger">
+            {{ vm.errors.category_id }}
+          </p>
+        </div>
+      </div>
+      <div class="form-group has-feedback col-6">
+        <label for="productSize" class="form-control-label"
+          >Cylinder Size</label
+        >
+        <input
+          type="hidden"
+          name="productName"
+          ng-model="vm.productById.name"
+        />
+        <select
+          name="productSize"
+          id="productSize"
+          class="form-control"
+          required
+          ng-model="vm.productById.size_id"
+        >
+          <option value="">Select Capacity</option>
+          <option
+            ng-repeat="size in ngDialogData.productSizes"
+            value="{{ size.id }}"
+            >{{ size.name }}</option
+          >
+        </select>
+
+        <!-- <input
+          class="form-control "
+          id="productName"
+          placeholder="Name"
+          ng-model="vm.productById.name"
+          name="productName"
+          autocomplete="off"
+          required
+        /> -->
+        <div class="errorMessage">
+          <p
+            ng-show="editProduct.productSize.$touched && editProduct.productSize.$error.required"
+            class="badge badge-danger"
+          >
+            Capacity is required.
+          </p>
+          <p ng-show="vm.errors.name" class="badge badge-danger">
+            {{ vm.errors.name }}
+          </p>
+          <p ng-show="vm.errors.size_id" class="badge badge-danger">
+            {{ vm.errors.size_id }}
+          </p>
+        </div>
+      </div>
+      <div class="form-group has-feedback col-12">
+        <label for="price" class="form-control-label">Retail Price</label>
+        <input
+          class="form-control "
+          id="price"
+          placeholder="Ex: 100"
+          ng-model="vm.productById.price"
+          name="price"
+          autocomplete="off"
+          required
+        />
+        <div class="errorMessage">
+          <p
+            ng-show="editProduct.price.$touched && editProduct.price.$error.required"
+            class="badge badge-danger"
+          >
+            Price is required.
+          </p>
+          <p
+            ng-show="editProduct.price.$touched && editProduct.price.$error.pattern"
+            class="badge badge-danger"
+          >
+            Enter a valid price
+          </p>
+          <p ng-show="vm.errors.price" class="badge badge-danger">
+            {{ vm.errors.price }}
+          </p>
+        </div>
+      </div>
+      <div class="form-group has-feedback col-12">
+        <label for="delCharge" class="form-control-label"
+          >Delivery Charge</label
+        >
+        <input
+          class="form-control "
+          id="price"
+          placeholder="Ex: 100"
+          ng-model="vm.productById.delivery_charge"
+          name="price"
+          autocomplete="off"
+          required
+        />
+        <div class="errorMessage">
+          <p
+            ng-show="editProduct.price.$touched && editProduct.price.$error.required"
+            class="badge badge-danger"
+          >
+            Delivery charge is required.
+          </p>
+          <p
+            ng-show="editProduct.price.$touched && editProduct.price.$error.pattern"
+            class="badge badge-danger"
+          >
+            Enter a valid amount
+          </p>
+          <p ng-show="vm.errors.delivery_charge" class="badge badge-danger">
+            {{ vm.errors.delivery_charge }}
+          </p>
+        </div>
+      </div>
+      <div class="form-group has-feedback col-12">
+        <label for="depositCharge" class="form-control-label"
+          >Deposite (For new cylinders)</label
+        >
+        <input
+          class="form-control "
+          id="depositCharge"
+          placeholder="Ex: 1000"
+          ng-model="vm.productById.deposit_amount"
+          name="depositCharge"
+          autocomplete="off"
+          required
+        />
+        <div class="errorMessage">
+          <p
+            ng-show="editProduct.depositCharge.$touched && editProduct.depositCharge.$error.required"
+            class="badge badge-danger"
+          >
+            Deposit amount is required.
+          </p>
+          <p ng-show="vm.errors.deposit_amount" class="badge badge-danger">
+            {{ vm.errors.deposit_amount }}
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group has-feedback col-12">
+        <label for="description" class="form-control-label">Description</label>
+        <textarea
+          class="form-control description"
+          id="description"
+          name="description"
+          ng-model="vm.productById.description"
+          required
+        ></textarea>
+        <div class="errorMessage">
+          <p
+            ng-show="editProduct.description.$touched && editProduct.description.$error.required"
+            class="badge badge-danger"
+          >
+            Description is required.
+          </p>
+          <p ng-show="vm.errors.description" class="badge badge-danger">
+            {{ vm.errors.description }}
+          </p>
+        </div>
+      </div>
+      <div
+        class="form-group has-feedback col-12"
+        ng-if="vm.userRole == 'administrator'"
+      >
+        <label for="description" class="form-control-label">Image</label>
+        <div class="avatar-upload">
+          <div class="avatar-edit">
+            <div class="file-upload-wrapper" data-text="Select your file!">
+              <input
+                name="file-upload-field"
+                id="imageUpload"
+                type="file"
+                class="file-upload-field"
+                ng-file-select="onFileSelect($files)"
+                accept=".png, .jpg, .jpeg"
+                ng-model="vm.imageSrc"
+              />
+            </div>
+            <label for="imageUpload"></label>
+          </div>
+          <div class="avatar-preview">
+            <img
+              id="imagePreview"
+              ng-src="{{ vm.imageSrc }}"
+              on-error-src="/assets/images/default.jpg"
+            />
+          </div>
+        </div>
+
+        <div class="errorMessage">
+          <p
+            ng-show="editProduct.umage.$touched && editProduct.image.$error.required"
+            class="badge badge-danger"
+          >
+            Image cant be empty
+          </p>
+          <p ng-show="vm.errors.image" class="badge badge-danger">
+            {{ vm.errors.image }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="modal-footer col-12">
+        <button
+          type="button"
+          class="btn btn-default"
+          ng-click="vm.closePopUp()"
+          data-dismiss="modal"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="button"
+          id="submit"
+          class="btn btn-success"
+          ng-click="vm.updateProduct(vm.productById)"
+          ng-disabled="editProduct.productName.$invalid || editProduct.size_id.$invalid || editProduct.description.$invalid || editProduct.price.$invalid || editProduct.category_id.$invalid || vm.submitting"
+        >
+          {{ ngDialogData.saveBtn }}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

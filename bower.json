@@ -1,0 +1,94 @@
+{
+    "name": "gas.admin",
+    "version": "1.0.0",
+    "private": true,
+    "dependencies": {
+        "bootstrap": "^4.1.3",
+        "jquery": "^3.2.1",
+        "angular": "^1.6.4",
+        "angular-animate": "^1.6.4",
+        "angular-cookies": "^1.6.4",
+        "angular-resource": "^1.6.4",
+        "angular-sanitize": "^1.6.4",
+        "angular-ui-router": "1.0.3",
+        "angular-loading-bar": "^0.9.0",
+        "angular-local-storage": "^0.5.2",
+        "angular-ui-notification": "^0.3.6",
+        "angular-breadcrumb": "^0.5.0",
+        "angular-base64": "^2.0.5",
+        "angular-touch": "^1.6.4",
+        "modernizr": "~2.8.1",
+        "crypto-js": "^3.1.9",
+        "font-awesome": "fontawesome#^4.7.0",
+        "oclazyload": "^1.1.0",
+        "simple-line-icons": "^2.4.1",
+        "ng-dialog": "^1.3.0",
+        "moment": "^2.18.1",
+        "octicons": "^5.0.1",
+        "angular-moment-picker": "moment-picker#^0.10.1",
+        "vs-google-autocomplete": "0.5.0",
+        "BowerTry": "bower_components#^0.0.2",
+        "angular-ui-sortable": "^0.17.2",
+        "ng-drag-to-reorder": "1.0.6",
+        "angular-toArrayFilter": "^1.0.1",
+        "devextreme": "^17.2.4",
+        "ngMask": "angular-mask#^3.1.1",
+        "angular-base64-upload": "0.1.23",
+        "angular-confirm-field": "^0.1.2",
+        "mobile-drag-drop": "^2.2.0",
+        "international-phone-number": "^0.0.16",
+        "angular-tooltips": "^1.2.2",
+        "popper.js": "^1.14.4",
+        "jt.timepicker": "timepicker#^1.11.13",
+        "angular-ui-bootstrap-datetimepicker": "^2.5.1",
+        "tooltip.js": "https://unpkg.com/tooltip.js",
+        "angular-jquery-timepicker": "^0.13.1",
+        "tether": "^1.4.4",
+        "angular-validation": "^1.4.4",
+        "angularUtils-pagination": "angular-utils-pagination#^0.11.1",
+        "checklist-model": "^1.0.0",
+        "angular-filter": "^0.5.17",
+        "angular-image-compress": "^0.1.5",
+        "angular-chart.js": "^1.1.1",
+        "ng-intl-tel-input": "^2.0.0",
+        "pdfobject": "^1.2.0",
+        "angular-multiselect": "shalotelli-angular-multiselect#^0.4.16",
+        "ng-tags-input": "^3.2.0",
+        "angular-trix": "^1.0.2",
+        "angular-ui-calendar": "^1.0.2",
+        "angular-pdf": "^2.0.0"
+    },
+    "overrides": {
+        "bootstrap": {
+            "main": [
+                "scss/bootstrap.scss",
+                "dist/js/bootstrap.js"
+            ]
+        },
+        "font-awesome": {
+            "main": [
+                "./scss/font-awesome.scss",
+                "./fonts/*"
+            ]
+        }
+    },
+    "appPath": "app",
+    "moduleName": "gasAdmin",
+    "authors": [
+        "Sanoj Hettige <sanojhettige@gmail.com>"
+    ],
+    "description": "GasMan Admin Console",
+    "main": "app.js",
+    "license": "",
+    "homepage": "index.html",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "resolutions": {
+        "angular": "1.7.3"
+    }
+}

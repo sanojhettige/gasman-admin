@@ -1,0 +1,97 @@
+<div
+  class="page vertical-align text-center"
+  ng-init="vm.checkURL()"
+  data-animsition-in="fade-in"
+  data-animsition-out="fade-out"
+>
+  >
+  <div
+    class="page-content vertical-align-middle animation-slide-top animation-duration-1"
+    style="width: 35%;"
+  >
+    <div class="panel">
+      <div class="panel-body">
+        <div class="brand">
+          <img
+            class="brand-img login-logo"
+            src="/assets/images/login-logo.png"
+            alt="Logo"
+          />
+          <h2 class="brand-text font-size-18">Remark</h2>
+        </div>
+        <form method="post">
+          <div class="form-group">
+            <label class="sr-only" for="inputName">Email</label>
+            <input
+              class="form-control login-input"
+              id="username"
+              type="email"
+              placeholder="Email"
+              ng-model="vm.username"
+              name="uname"
+              autocomplete="off"
+              ng-enter="vm.login(vm.username,vm.password);"
+              ng-pattern="/^[aA-zZ]+[aA-zZ0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+              required
+            />
+            <div class="errorMessage">
+              <p
+                ng-show="formOne.uname.$touched && formOne.uname.$error.required"
+              >
+                Email address is required.
+              </p>
+              <p
+                ng-show="formOne.uname.$touched && formOne.uname.$error.pattern"
+              >
+                Enter a valid email address.
+              </p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="sr-only" for="inputPassword">Password</label>
+            <input
+              class="form-control login-input"
+              type="password"
+              placeholder="Password"
+              ng-model="vm.password"
+              name="pass"
+              ng-enter="vm.login(vm.username,vm.password);"
+              required
+            />
+            <div class="errorMessage">
+              <p
+                ng-show="formOne.pass.$touched && formOne.pass.$error.required"
+              >
+                Password is required.
+              </p>
+            </div>
+          </div>
+          <div class="form-group clearfix">
+            <div
+              class="checkbox-custom checkbox-inline checkbox-primary float-left"
+            >
+              <label>
+                <input ng-model="vm.remember" name="remember" type="checkbox" />
+                Remember Me
+              </label>
+            </div>
+            <a class="float-right" ng-click="vm.forgetPassPopUp()"
+              >Forgot password?</a
+            >
+          </div>
+          <button
+            type="submit"
+            ng-click="vm.login(vm.username,vm.password);"
+            ng-disabled="formOne.$invalid || vm.dataLoading"
+            class="btn btn-primary btn-block"
+          >
+            SIGN IN
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div ng-include="vm.pageContent.customFooterUrl"></div>
+  </div>
+</div>

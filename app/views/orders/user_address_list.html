@@ -1,0 +1,22 @@
+<div>
+  <h4 class="form-title">{{ ngDialogData.title }}</h4>
+
+  <div class="form-row">
+    <div class="form-group has-feedback col-12">
+      <table class="table">
+        <tbody>
+          <tr ng-repeat="add in ngDialogData.customerAddresses">
+            <td>{{ add.address }}</td>
+            <td>
+              <span
+                ng-click="vm.setAddrees(add.address)"
+                class="btn btn-success"
+                >Select</span
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
